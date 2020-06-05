@@ -2,8 +2,7 @@ const express = require("express");
 const sharp = require('sharp');
 const path = require("path");
 const app = express()
-const port = 3000
-app.get('/', (req, res) => res.send("Try: http://localhost:3000/image/iguanas/100/230"))
+app.get('/', (req, res) => res.send("Try: /image/iguanas/100/230"))
 app.get("/image/:name/:w/:h", async (req, res) => {
 const {w,h,name} = req.params;
 const file=name+".jpg";
@@ -19,6 +18,7 @@ await sharp(infile)
   .catch( err => { res.send({err}) });
 
 })
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Example app listening at http://localhost:${port}`))
 
 
