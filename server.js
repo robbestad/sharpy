@@ -2,7 +2,7 @@ const express = require("express");
 const sharp = require('sharp');
 const path = require("path");
 const app = express()
-app.get('/', (req, res) => res.send("Try: /image/iguanas/100/230"))
+app.get('/', (req, res) => res.send("Try: <a href=\"/image/iguanas/100/230\">/image/iguanas/100/230</a>"))
 app.get("/image/:name/:w/:h", async (req, res) => {
 const {w,h,name} = req.params;
 const file=name+".jpg";
